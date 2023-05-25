@@ -1,91 +1,65 @@
-# MINISHELL
+# Project Minishell
 
-## Table of Contents
+Minishell is a project that aims to create a simplified shell program. It provides a command-line interface where users can execute various commands and manage processes. This README provides instructions on installing, using, and understanding the project, as well as acknowledging the individuals who contributed to its development.
 
-1. [Instalation](#instalation)
-2. [Errors](#errors)
-3. [Utils](#utils)
+## Installation
 
-## Instalation 
+To install and use Minishell, follow these steps:
 
-```bash
-git clone https://github.com/eliaszanotti/minishell.git
+1. Clone the Minishell repository from GitHub:
+   ```
+   git clone https://github.com/username/minishell.git
+   ```
+
+2. Change into the project directory:
+   ```
+   cd minishell
+   ```
+
+3. Compile the Minishell program using the provided Makefile:
+   ```
+   make
+   ```
+
+4. The `minishell` executable will be generated. You can now start using Minishell.
+
+Note: Minishell requires a Unix-like operating system and a C compiler (e.g., GCC) to be installed on your system.
+
+## Usage
+
+To use Minishell, follow the syntax:
+
+```
+./minishell
 ```
 
-To install minishell you just have to clone the project and run the following command:
+This command starts the Minishell program and presents you with a command prompt where you can enter various commands.
 
-```c
-make
+Example usage:
+
+```
+./minishell
+$ ls -l
 ```
 
-## Errors
+This will start Minishell and execute the `ls -l` command, displaying a list of files and directories in the current directory.
 
-**[ERROR:2]** Command not found
+Minishell supports various shell functionalities, including command execution, environment variable expansion, input/output redirection, pipelines, and more. You can explore these features by entering different commands and using standard shell syntax.
 
-**[ERROR:3]** Parse error (quote not closed)
+## Documentation
 
-**[ERROR:4]** Parse error on pipe
+Minishell has the following key features and considerations:
 
-**[ERROR:5]** Syntax error on redirect
+- The project uses system calls and various standard C library functions to implement shell functionalities.
+- Command parsing and execution are handled through a combination of string manipulation, process management, and input/output redirection.
+- Minishell provides a basic environment with built-in shell commands and supports executing external programs.
+- The project implements error handling to report any encountered errors and provide feedback to the user.
 
-**[ERROR:6]** Parse error at end of command
+For further details on the implementation, code structure, and supported features, refer to the source code comments and documentation provided within the Minishell repository.
 
-**[ERROR:10]** Failed to create fork
+## Credits
 
-**[ERROR:11]** Failed to pipe fd
+Minishell is the result of the collective effort of several individuals :
 
-**[ERROR:12]** Failed to execute command
-
-**[ERROR:13]** Failed to duplicate fd (dup2 error)
-
-**[ERROR:14]** Can't open file
-
-**[ERROR:15]** Can't create file
-
-**[ERROR:20]** No such file or directory
-
-**[ERROR:99]** Malloc cannot be created
-
-## Utils
-
-**ft_log**
-
-```c
-static void	ft_u(t_list *in)
-{
-	while (in)
-	{
-		printf("[%s]", (char *)in->content);
-		in = in->next;
-	}
-	printf("\n");
-}
-
-void	ft_log(t_list *stack)
-{
-	while (stack)
-	{
-		ft_u(stack->content);
-		stack = stack->next;
-	}
-	printf("%p\n", stack);
-}
-```
-
-**ft_logg (envp log)**
-
-```c
-int	ft_logg(t_args *args)
-{
-	t_envp	*envp;
-
-	envp = args->envp;
-	while (envp)
-	{
-		printf("%d ", envp->equal);
-		printf("%s=%s\n", envp->name, envp->value);
-		envp = envp->next;
-	}
-	return (0);
-}
-```
+- [Thibault GIRAUDON (tgiraudo)](https://github.com/Thib1708)
+- [Elias ZANOTTI (ezanotti)](https://github.com/eliaszanotti)
